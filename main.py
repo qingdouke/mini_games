@@ -1,0 +1,38 @@
+import pygame
+from games.snake.engine import gameLoop
+
+def show_menu():
+    pygame.init()
+    screen = pygame.display.set_mode((600, 400))
+    pygame.display.set_caption("小游戏合集启动器")
+    font = pygame.font.SysFont("SimHei", 30)
+    clock = pygame.time.Clock()
+
+    while True:
+        screen.fill((50, 150, 200))
+        title = font.render("请选择游戏：", True, (255, 255, 255))
+        option1 = font.render("1 - 贪吃蛇", True, (255, 255, 0))
+        quit_option = font.render("Q - 退出游戏合集", True, (255, 100, 100))
+
+        screen.blit(title, (180, 80))
+        screen.blit(option1, (200, 140))
+        screen.blit(quit_option, (180, 250))
+        pygame.display.update()
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                return
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_q:
+                    pygame.quit()
+                    return
+                elif event.key == pygame.K_1:
+                    result = gameLoop()
+                    if result == "menu":
+                        continue  # 回到菜单
+
+        clock.tick(30)
+
+if __name__ == "__main__":
+    show_menu()
