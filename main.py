@@ -1,5 +1,6 @@
 import pygame
-from games.snake.engine import gameLoop
+from games.snake.engine import gameLoop as snake_game
+from games.whack.engine import gameLoop as whack_game
 
 def show_menu():
     pygame.init()
@@ -13,7 +14,9 @@ def show_menu():
         title = font.render("请选择游戏：", True, (255, 255, 255))
         option1 = font.render("1 - 贪吃蛇", True, (255, 255, 0))
         quit_option = font.render("Q - 退出游戏合集", True, (255, 100, 100))
+        option2 = font.render("2 - 打地鼠", True, (255, 255, 0))
 
+        screen.blit(option2, (200, 180))
         screen.blit(title, (180, 80))
         screen.blit(option1, (200, 140))
         screen.blit(quit_option, (180, 250))
@@ -28,7 +31,9 @@ def show_menu():
                     pygame.quit()
                     return
                 elif event.key == pygame.K_1:
-                    result = gameLoop()
+                    result = snake_game()
+                elif event.key == pygame.K_2:
+                    result = whack_game()
                     if result == "menu":
                         continue  # 回到菜单
 
