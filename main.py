@@ -7,7 +7,7 @@ def show_menu():
     screen = pygame.display.set_mode((600, 400))
     pygame.display.set_caption("小游戏合集启动器")
     font = pygame.font.SysFont("SimHei", 30)
-    clock = pygame.time.Clock()
+    clock = pygame.time.Clock( )
 
     while True:
         screen.fill((50, 150, 200))

@@ -1,17 +1,18 @@
 import pygame
 import random
-from .logic import init_game, snake_block, width, height
+from .logic import init_game, snake_block, WIDTH, HEIGHT
 from .ui import draw_snake, show_message
+
 
 def game_loop():
     # 初始化
     pygame.init()
     print("pygame.init...")
     white, black, red, green, blue = (255, 255, 255), (0, 0, 0), (213, 50, 80), (0, 255, 0), (50, 153, 213)
-    display = pygame.display.set_mode((width, height))
+    display = pygame.display.set_mode((WIDTH, HEIGHT))
     pygame.display.set_caption("贪吃蛇游戏")
     font_style = pygame.font.SysFont("SimHei", 25)
-    score_font = pygame.font.SysFont("SimHei", 35)
+    #score_font = pygame.font.SysFont("SimHei", 35)
 
     clock = pygame.time.Clock()
     snake_speed = 10
@@ -24,7 +25,7 @@ def game_loop():
         while not game_over:
             while game_close:
                 display.fill(blue)
-                show_message(display, font_style, "你输了! 按 C 继续或按 Q 退出", red, width, height)
+                show_message(display, font_style, "你输了! 按 C 继续或按 Q 退出", red, WIDTH, HEIGHT)
                 pygame.display.update()
 
                 for event in pygame.event.get():
@@ -57,7 +58,7 @@ def game_loop():
                     elif event.key == pygame.K_DOWN:
                         y1_change = snake_block
                         x1_change = 0
-            if x1 >= width or x1 < 0 or y1 >= height or y1 < 0:
+            if x1 >= WIDTH or x1 < 0 or y1 >= HEIGHT or y1 < 0:
                 game_close = True
 
             display.fill(blue)
@@ -82,8 +83,8 @@ def game_loop():
                 new_food_pos_valid = False
                 while not new_food_pos_valid:
                     # Generate new random food coordinates
-                    x_food = round(random.randrange(0, width - snake_block) / 10.0) * 10.0
-                    y_food = round(random.randrange(0, height - snake_block) / 10.0) * 10.0
+                    x_food = round(random.randrange(0, WIDTH - snake_block) / 10.0) * 10.0
+                    y_food = round(random.randrange(0, HEIGHT - snake_block) / 10.0) * 10.0
                     if [x_food, y_food] not in snake_list:
                         new_food_pos_valid = True
 
