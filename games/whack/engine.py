@@ -2,7 +2,7 @@ import pygame
 from .logic import random_mole_position, WIDTH, HEIGHT, MOLE_SIZE
 from .ui import draw_mole, draw_score
 
-def gameLoop():
+def game_loop():
     pygame.init()
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
     pygame.display.set_caption("打地鼠")

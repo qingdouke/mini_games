@@ -1,7 +1,7 @@
 import pygame
-from games.snake.engine import gameLoop as snake_game
-from games.whack.engine import gameLoop as whack_game
-
+from games.snake.engine import game_loop as snake_game
+from games.whack.engine import game_loop as whack_game
+from games.airplane.engine import game_loop as airplane_game
 def show_menu():
     pygame.init()
     screen = pygame.display.set_mode((600, 400))
@@ -15,11 +15,13 @@ def show_menu():
         option1 = font.render("1 - 贪吃蛇", True, (255, 255, 0))
         quit_option = font.render("Q - 退出游戏合集", True, (255, 100, 100))
         option2 = font.render("2 - 打地鼠", True, (255, 255, 0))
+        option3 = font.render("3 - 飞机大战", True, (255, 255, 0))
 
-        screen.blit(option2, (200, 180))
         screen.blit(title, (180, 80))
         screen.blit(option1, (200, 140))
-        screen.blit(quit_option, (180, 250))
+        screen.blit(option2, (200, 180))
+        screen.blit(option3, (200, 220))
+        screen.blit(quit_option, (180, 280))
         pygame.display.update()
 
         for event in pygame.event.get():
@@ -34,6 +36,8 @@ def show_menu():
                     result = snake_game()
                 elif event.key == pygame.K_2:
                     result = whack_game()
+                elif event.key == pygame.K_3:
+                    result = airplane_game()
                     if result == "menu":
                         continue  # 回到菜单
 

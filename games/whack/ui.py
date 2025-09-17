@@ -2,7 +2,7 @@ import pygame
 import os
 
 # 加载地鼠图片（只加载一次）
-mole_image = pygame.image.load(os.path.join(os.path.dirname(__file__), "assets", "blackegg.png"))
+mole_image = pygame.image.load(os.path.join(os.path.dirname(__file__), "assets", "black egg.png"))
 mole_image = pygame.transform.scale(mole_image, (60, 60))  # 缩放为统一尺寸
 
 #def draw_mole(screen, x, y, size):
