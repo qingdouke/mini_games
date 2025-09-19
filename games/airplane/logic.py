@@ -47,8 +47,8 @@ class Player(pygame.sprite.Sprite):
 
     def shoot(self):
         # Create a bullet for the middle shot
-        bullet_middle = Bullet(self.rect.centerx, self.rect.top)
-
+        #bullet_middle = Bullet(self.rect.centerx, self.rect.top)
+        bullet_middle: Bullet = Bullet(self.rect.centerx, self.rect.top)
         # Create a bullet for the left shot
         # Starting position is slightly to the left of the player's center
         # The velocity will be adjusted in the Bullet class
@@ -59,8 +59,8 @@ class Player(pygame.sprite.Sprite):
         bullet_right = Bullet(self.rect.centerx + 15, self.rect.top)
 
         # Add all three bullets to the sprite groups
-        all_sprites.add(bullet_middle, bullet_left, bullet_right)
-        bullets.add(bullet_middle, bullet_left, bullet_right)
+
+        return bullet_middle, bullet_left, bullet_right
 
 # Enemy class
 class Enemy(pygame.sprite.Sprite):
@@ -108,3 +108,17 @@ class Bullet(pygame.sprite.Sprite):
 all_sprites = pygame.sprite.Group()
 enemies = pygame.sprite.Group()
 bullets = pygame.sprite.Group()
+
+def init_game():
+    all_sprites.empty()
+    enemies.empty()
+    bullets.empty()
+    # Create game objects
+    player = Player()
+    all_sprites.add(player)
+    # Create some enemies
+    for i in range(8):
+        enemy = Enemy()
+        all_sprites.add(enemy)
+        enemies.add(enemy)
+    return all_sprites, enemies, bullets,player,enemy

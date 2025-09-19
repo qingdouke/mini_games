@@ -40,7 +40,6 @@ def show_menu():
                     result = airplane_game()
                     if result == "menu":
                         continue  # 回到菜单
-
         clock.tick(30)
 
 if __name__ == "__main__":
